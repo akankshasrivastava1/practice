@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            {{courseName}}
+        </div>
+         <div class="col-3">
+            {{currentRollNo}}
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            {{courseDuration()}}
+        </div>
+         <div class="col-3">
+            {{isBatchActive()}}
+        </div>
+        <div class="col-2">
+            <button (click)="onDurationChange()" class="btn btn-success">Change Duration</button>
+        </div>
+         <div class="col-2">
+            <button (click)="setNewDurationChange()" class="btn btn-success">Change Duration</button>
+        </div>
+        <div class="col-2">
+            {{cityList()}}
+            <ul>
+                @for (item of cityList(); track $index) {
+                    <li>{{item}}</li>
+                }
+            </ul>
+        </div>
+        <br>
+        <div class="col-2">
+            <button (click)="addCity()" class="btn btn-success">Add City</button>
+            <button (click)="addUPCity()" class="btn btn-success">Add UP City</button>
+        </div>
+        <div class="col-2">
+            {{studObj().name}} - {{studObj().city}}
+        </div>
+    </div>
+</div> 

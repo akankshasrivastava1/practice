@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-3">
+        <button class="btn btn-success" (click)="getAllUser()">Load User</button>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-success" (click)="getAllPosts()">Load User</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-3">
+        <ul>
+            @for (item of UserList; track $index) {
+                <li>{{item.name}} - {{item.email}}</li>
+            }
+        </ul>
+    </div>
+    <div class="col-3">
+        <ul>
+            @for (item of PostsList; track $index) {
+                <li>{{item.title}}</li>
+                <li>{{item.body}}</li>
+            }
+        </ul>
+    </div>
+</div>

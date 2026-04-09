@@ -1,0 +1,177 @@
+<div class="row">
+    <div class="col-3">
+        <ul id="myCityUl">
+            <li *ngFor="let item of cityList"> {{item}}</li>
+        </ul>
+    </div>
+    <div class="col-3">
+        <button *ngFor="let city of cityList" class="btn btn-warning btn-sm mx-2">
+            {{city}}
+        </button>
+    </div>
+    <div class="col-3">
+        <label for="" *ngFor="let city of cityList"> {{city}} ,</label>
+    </div>
+    <div class="col-3">
+        <div for="" *ngFor="let stud of studentList"> {{stud.name}} - {{stud.city}}</div>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-3">
+        <ul>
+            @for (item of cityList; track $index) {
+            <li> {{item}}</li>
+            }
+        </ul>
+    </div>
+    <div class="col-3">
+        @for (city of cityList; track $index) {
+        <label for="City">City Name</label>
+        <input type="text" [value]="city">
+        }
+    </div>
+    <div class="col-3">
+        <input type="text" *ngFor="let stud of studentList" [(ngModel)]="stud.name">
+    </div>
+    <div class="col-3">
+        <ul>
+            @for (item of studentList; track $index) {
+            <li>{{item.name}}</li>
+            }
+        </ul>
+    </div>
+</div>
+<hr>
+
+<div class="row">
+    <div class="col-6">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Attendance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let stud of studentList;let srno = index; let isFirst= first; let isLast=last">
+                    <td>{{srno +1}} - {{isFirst}} + {{isLast}}</td>
+                    <td>{{stud.name}}</td>
+                    <td>{{stud.email}}</td>
+                    <td>{{stud.city}}</td>
+                    <td>{{stud.state}}  - {{isFirst}} + {{isLast}}</td>
+                    <td>
+                        <app-progress-bar [progressWidth]="stud.attendancePeer"></app-progress-bar>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-6">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>City</th>
+                    <th>State</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (stud of studentList; track $index; let isFirst = $first; let isLast = $last; let isEVen= $even, let isOdd =$odd) {
+                <tr>
+                    <td>{{$index +1}} -- {{isEVen}}</td>
+                    <td>{{stud.name}}</td>
+                    <td>{{stud.email}}</td>
+                    <td>{{stud.city}}</td>
+                    <td>{{stud.state}} - {{isFirst}} + {{isLast}}</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-3 mt-1" *ngFor="let student of studentList">
+        <div class="card" >
+            <div class="card-body">
+                <h4 class="card-title">{{student.name}}</h4>
+                <p class="card-text">{{student.email}}</p>
+                <div class="row">
+                    <div class="col-6">
+                        {{student.city}}
+                    </div>
+                     <div class="col-6">
+                        {{student.state}}
+                    </div>
+                </div>
+                <a href="#" class="card-link">Edit</a>
+                <a href="#" class="card-link">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<hr>
+<div class="row">
+    <div class="col-12">
+         <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let stud of studentList;let srno = index;">
+                    <td>{{srno +1}}</td>
+                    <td>{{stud.name}}</td>
+                    <td>{{stud.email}}</td>
+                    <td>{{stud.city}}</td>
+                    <td>{{stud.state}}  </td>
+                    <td>
+                        <span *ngIf="stud.isActive" class="text-success">Student is Active</span>
+                        <span *ngIf="stud.isActive == false" class="text-danger">Student is De-Active</span>
+                    </td>
+                    <td>
+                        @if (stud.isActive) {
+                             <span class="text-success">Student is Active</span>
+                        } @else {
+                            <span class="text-danger">Student is De-Active</span>
+                        } 
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-3">
+        <select class="form-select" >
+            <option *ngFor="let city of cityList" >{{city}}</option>
+        </select>
+    </div>
+     <div class="col-3">
+        <select class="form-select">
+            @for (item of studentList; track $index) {
+                <option [value]="item.studId"> {{item.name}}</option>
+            }
+        </select>
+    </div>
+    <div class="col-3">
+        @for (item of cityList; track $index) {
+             <input type="radio" name="cityName"> {{item}}
+        }
+    </div>
+</div>

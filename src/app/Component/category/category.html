@@ -1,0 +1,119 @@
+<app-alert [alertTitle]="'Error'" [alertSubTitle]="alertMesaage"></app-alert>
+<br>
+<app-progress-bar [progressWidth]="90"></app-progress-bar>
+<br>
+<app-tabs [tabList]="myTabList" (onTabChange)="getTabChange($event)"></app-tabs>
+<br>
+
+<div class="row">
+    <div class="col-3">
+        <app-my-button [btnType]="'primary'" (onBtnClick)="onSaveBtnClicked()" [btnText]="'Save User'"></app-my-button>
+    </div>
+    <div class="col-3">
+        <app-my-button [btnType]="'secondary'" (onBtnClick)="onUpdateBtnClicked()" [btnText]="'Update User'"></app-my-button>
+    </div>
+
+    <div class="col-4">
+        <app-my-list [listofItem]="['Software Developer','QA','Devops', 'Marketing']"></app-my-list>
+    </div>
+    <br>
+    <app-my-image [height]="'200'" [width]="'200'" [imgSrc]="'https://m.media-amazon.com/images/I/81QI0Kj5IyL._AC_UF350,350_QL50_.jpg'"></app-my-image>
+
+    @if (currentTab == 'Category List') {
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-success">
+                User List
+            </div>
+            <div class="card-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sr No</th>
+                            <th>Category Name</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (item of categoryList(); track $index) {
+                        <tr>
+                            <td>{{ $index + 1 }}</td>
+                            <td>{{ item.categoryName}}</td>
+                            <td>{{ item.isActive}}</td>
+                            <td>{{ item.password}}</td>
+                            <td>
+                                <app-my-button [btnType]="'primary'" [btnText]="'Edit'" (onBtnClick)="onEdit(item)"></app-my-button>
+                                <!-- <button class="btn btn-success" (click)="onEdit(item)">Edit</button> -->
+                                <!-- <button class="btn btn-danger">Delete</button> -->
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    } @else {
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-success">
+                User List
+                <br>
+
+            </div>
+            <div class="card-body">
+                <form [formGroup]="categoryForm">
+                    <div class="row">
+
+                        <div class="col-6">
+                            <label for="">Category Name</label>
+                            <input type="text" formControlName="categoryName" class="form-control">
+                            <div class="text-danger">
+                                @if(categoryForm.get('categoryName')?.touched &&
+                                categoryForm.get('categoryName')?.invalid)
+                                {
+                                @if(categoryForm.get('categoryName')?.errors?.['required'])
+                                {
+                                <span>Name is Required</span>
+                                }@else if (categoryForm.get('categoryName')?.errors?.['minlength']) {
+                                <span>Minimum 4 characters required</span>
+                                }
+                                }
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <label for="">isActive</label>
+                            <input type="checkbox" formControlName="isActive" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row pt-3">
+                        <div class="col-6">
+                            <!-- @if(newUserObj.userId == 0) {
+                            <button class="btn btn-primary" (click)="onSaveUser()">Save User</button>
+                        }@else {
+                            <button class="btn btn-warning" (click)="onUpdateUser()">Update User</button>
+                        } -->
+                        </div>
+                        <div class="col-6 text-senter">
+                            <button class="btn btn-secondary" (click)="onReset(categoryForm)">Reset Form</button>
+                        </div>
+
+                        <div class="col-6 text-senter">
+                            <button class="btn btn-secondary" (click)="onSaveCategory()">Save Category</button>
+                        </div>
+
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+    }
+
+
+
+</div>

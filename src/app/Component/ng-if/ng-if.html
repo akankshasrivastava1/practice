@@ -1,0 +1,75 @@
+<!-- Create 2 Radio Button for male & female
+If male selected Show "You Have selected Male"
+If feMale selected Show "You Have selected Female"
+ Male
+ Female -->
+
+<div class="row pt-6">
+    <div class="col-1 bg-success">
+        <input type="radio" name="gender" value="Male" [(ngModel)]="selectedGender">
+        <label> Male </label> <br>
+        <input type="radio" name="gender" value="Female" [(ngModel)]="selectedGender">
+        <label> Female </label>
+    </div>
+    <div class="col-1">
+        @if(selectedGender)
+        {
+        <label> You have selected {{selectedGender}} </label>
+        }
+    </div>
+    <!-- Show Product Category in 3 Div
+On click of div - store selected category in a variable
+show selected Companies of selected category -->
+
+    <div class="col-1 bg-success" (click)="selectedCategory='Mobile'">
+        <label> Mobile </label>
+        @if (selectedCategory === 'Mobile')
+        { @for (item of mobile; track $index)
+        {
+        <li>{{item}}</li>
+        }
+        }
+    </div>
+
+    <div class="col-1 bg-danger" (click)="selectedCategory='Laptop'">
+        <label> Laptop </label>
+        @if (selectedCategory === 'Laptop')
+        { @for (item of laptop; track $index)
+        {
+        <li>{{item}}</li>
+        }
+        }
+    </div>
+
+    <div class="col-1 bg-primary" (click)="selectedCategory='Camera'">
+        <label> Camera </label>
+        @if (selectedCategory === 'Camera')
+        { @for (item of camera; track $index)
+        {
+        <li>{{item}}</li>
+        }
+        }
+    </div>
+</div>
+
+<!-- show hide div1 on click of show & hide button -->
+<div class="row-3">
+    @if(isDiv1visible){
+    <div class="col-3 bg-warning">
+        Div 1
+    </div>
+    }
+    <button class="btn btn-danger" (click)="onHideDiv1()">Hide</button>
+    <button class="btn btn-success" (click)="onShowDiv1()">Show</button>
+</div>
+
+<!-- show hide div2 on click of toggle button -->
+
+<div class="row-2">
+    @if(isvisible){
+    <div class="box bg-warning">Div Content
+        Div 2
+    </div>
+    }
+    <button class="btn btn-info" (click)="toggleDiv()"> {{isvisible ?'hide': 'show'}}</button>
+</div>

@@ -1,0 +1,139 @@
+ <app-alert [alertTitle]="'Success'" [alertSubTitle]="'Welcome to Data Binding Page'"></app-alert>
+
+ <app-progress-bar [progressWidth]="40"></app-progress-bar>
+
+ <br>
+ <app-tabs [tabList]="['Basic','Project','Family','Skills']"></app-tabs>
+
+ <br>
+<div class="row">
+    <div class="col-6 bg-success">
+        <h1>One way</h1>
+        Interpolation
+        <p>Employee Name => {{EmpObj.name}}</p>
+    </div>
+    <div class="col-6 bg-warning">
+        <h1>Two way</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6 bg-success">
+        <div class="row">
+            <div class="col-6">
+                From .ts to HTML
+                <br>
+                <ul>
+                    <li>Interpolation</li>
+                    <p>Used to display data in HTML <br>
+                        ✔ Displays values from the component in the UI <br>
+                        ✔ Read‑only (you can’t update TS from HTML)
+                    </p>
+                    <li>Property Binding</li>
+                    <p>Used to bind HTML element properties.<br>
+                        Binds TS data to HTML element properties (src, disabled, value, etc.)
+                    </p>
+                </ul>
+            </div>
+            <div class="col-6">
+                From HTML to .ts
+                <br>
+                <ul>
+                    <li>Event Binding</li>
+                    <p>Used for capturing user actions like clicks, keypress, etc.<br>
+                        Used to capture HTML events and call a method in TypeScript.
+                        ✔ HTML event triggers a method in TS <br>
+                        ✔ UI updates automatically
+                    </p>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 bg-warning">
+        <h5>NGModel</h5>
+        <p>Used when you want changes in the UI to reflect in TS and vice‑versa. <br> Requires FormsModule.
+            <li>Used for two‑way update: HTML ↔ TS.</li>
+            <li>Works ONLY with ngModel.</li>
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-2">
+        property binding
+        <input [type]="myInputType">
+    </div>
+    <div class="col-2">
+        <input type="text" [minLength]="minChar" [maxLength]="maxCharAllowed">
+    </div>
+    <div [class]="myclassname">
+        <textarea [rows]="minChar"></textarea>
+    </div>
+    <div class="col-2">
+        <input type="text" [value]="courseName">
+    </div>
+    <div class="col-1">
+        <button class="btn btn-warning" [disabled]="isDisabled">Click me</button>
+    </div>
+</div>
+<div class="row">
+    Event Binding
+    <div class="col-5">
+        <button class="btn btn-success" (click)="changeCourse('React')">React</button>
+        <button class="btn btn-success" (click)="changeCourse('Angular')">Angular</button>
+        <button class="btn btn-success" (click)="changeCourse('SQL')">SQL</button>
+        <button class="btn btn-success" (click)="changeCourse('Dotnet')">Dotnet</button>
+    </div>
+    <div class="bg-danger mt-4" (mouseleave)="mouseLeave()" (mouseenter)="mouseEnter()" style="width:200px; 
+    height:200px;"></div>
+
+    <div class="col-2">
+        <button class="btn btn-info" (click)="showWelcomedText()">Show Alert</button>
+    </div>
+</div>
+
+<!-- NG Model -->
+<div class="row">
+    NG Model
+    <!-- Event Binding + $event -->
+    <div class="col-3">
+        <select (change)="onCityChanged($event)" [(ngModel)]="selectedCity">
+            <option>Pune</option>
+            <option>Bangalore</option>
+            <option>Hyderabad</option>
+        </select>
+    </div>
+
+    <div class="col-2">
+        <input type="text" [(ngModel)]="selectedCity">
+    </div>
+
+    <div class="col-2">
+        <input type="checkbox" [(ngModel)]="isActive">
+    </div>
+    <div class="col-2">
+        isActive => {{isActive}}
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-3">
+        {{ rollNoList }}
+        <br>
+        {{ rollNoList | slice: 2:5 }}
+    </div>
+
+    <div class="col-5">
+        {{ currentDate }}
+        <br>
+        {{ currentDate | date }}
+        <br>
+        {{ currentDate | date: 'dd-MM-yyyy' }} == {{ currentDate | date: 'dd-MM-yy' }}
+        <br>
+        {{ currentDate | date: 'dd-MMM-yyyy' }} == {{ currentDate | date: 'dd-MMMM-yy' }}
+        <br>
+        {{ currentDate | date: 'dd/MM/yyyy' }} == {{ currentDate | date: 'dd/MM/yy' }}
+        <br>
+        {{ currentDate | date: 'HH:mm a' }}
+    </div>
+
+</div>
