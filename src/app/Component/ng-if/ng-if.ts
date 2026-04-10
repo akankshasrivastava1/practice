@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MyList } from "../../Reusable/my-list/my-list";
 
 
 
 @Component({
   selector: 'app-ng-if',
-  imports: [FormsModule],
+  imports: [FormsModule, MyList],
   templateUrl: './ng-if.html',
   styleUrl: './ng-if.css',
 })

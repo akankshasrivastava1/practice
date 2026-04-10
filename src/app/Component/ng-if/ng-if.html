@@ -3,6 +3,16 @@ If male selected Show "You Have selected Male"
 If feMale selected Show "You Have selected Female"
  Male
  Female -->
+<div class="row">
+    <div class="col-3">
+        <app-my-list [isMultiple]="true" [listofItem]="['Laptop', 'Mobile', 'Camera']"></app-my-list>
+    </div>
+
+    <div class="col-3">
+        <app-my-list [isMultiple]="false" [listofItem]="['Laptop', 'Mobile', 'Camera']"></app-my-list>
+    </div>
+</div>
+
 
 <div class="row pt-6">
     <div class="col-1 bg-success">

@@ -13,11 +13,16 @@ export class RxjsEX {
   http = inject(HttpClient);
   cityList = ['Mumbai', 'Pune','Goa'];
 
-  $stateList = of(["MH","Goa","Punjab"]);
-  studentObj = of({name:'akank', city:'pune'})
+  //of() is used to create an Observable that emits fixed values synchronously and then completes.
+
+  $stateList = of(["MH","Goa","Punjab"]); // emit one array
+  studentObj = of({name:'akank', city:'pune'}) // emit on object
 
   $rollNoList = from([11,12,2,14,15]);//emit one by one
-//from expect only array
+//from - expect only array
+// from -  Takes an iterable (array, promise, string, etc.)
+// from -  Emits each item one by one
+// from() converts a collection into an Observable where each element is emitted separately.
 // promise and setinterval which will execute first -- first execute promise
 // setinterval execute every 2 sec -- interval gurantee to execute
   $myInterval = interval(2000);

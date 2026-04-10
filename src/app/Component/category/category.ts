@@ -65,6 +65,10 @@ export class Category implements OnInit{
     this.currentTab = "Category Form"
   }
 
+  getSelectedItem(itemName: string | string[]){
+    debugger;
+  }
+
   getAllCategory(){
     this.usrSrv.getCategory().subscribe({
       next:(res:any) =>{

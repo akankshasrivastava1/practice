@@ -13,8 +13,16 @@
         <app-my-button [btnType]="'secondary'" (onBtnClick)="onUpdateBtnClicked()" [btnText]="'Update User'"></app-my-button>
     </div>
 
-    <div class="col-4">
-        <app-my-list [listofItem]="['Software Developer','QA','Devops', 'Marketing']"></app-my-list>
+     <div class="col-3">
+        <app-my-list  [isMultiple]="true" [listofItem]="['Software Developer','QA','Devops', 'Marketing']">
+            (onSelectItem) = "getSelectedItem($event)"
+        </app-my-list>
+    </div>
+
+    <div class="col-3">
+        <app-my-list [isMultiple]="false" [listofItem]="['Software Developer','QA','Devops', 'Marketing']">
+            (onSelectItem) = "getSelectedItem($event)"
+        </app-my-list>
     </div>
     <br>
     <app-my-image [height]="'200'" [width]="'200'" [imgSrc]="'https://m.media-amazon.com/images/I/81QI0Kj5IyL._AC_UF350,350_QL50_.jpg'"></app-my-image>

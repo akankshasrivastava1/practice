@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -36,6 +37,13 @@ export class UserService {
 
   onSaveCategory(obj: any){
     return this.http.post("https://api.freeprojectapi.com/api/Enquiry/create-category", obj)
+  }
+
+  getAllApplication(){
+    return this.http.get("https://api.freeprojectapi.com/api/BankLoan/GetAllApplications").pipe(
+      map((result: any) => result.data),
+    
+    )
   }
 
 }
