@@ -21,11 +21,11 @@ export class Hooks implements OnInit, AfterContentChecked, AfterContentInit, Aft
   }
 
   ngAfterContentChecked(): void {
-    console.log("ngAfterContentChecked") // one component render another component
+    console.log("ngAfterContentChecked") // then content checked the all content initailazed well are not
   }
 
   ngAfterContentInit(): void {
-    console.log("ngAfterContentInit") // content start the initialization once done the initilation then content checked the all content initailazed well are not
+    console.log("ngAfterContentInit") //one component render another component  content start the initialization once done the initilation 
   }
 
   ngAfterViewInit(): void {
