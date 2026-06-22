@@ -11,21 +11,26 @@ import { User } from "../user/user";
 export class Hooks implements OnInit, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, OnDestroy, DoCheck{
 
   router2 = inject(Router); //16
+
+  courseName: string;
   
   constructor(private router: Router){
-    console.log("constructor")
+    console.log("constructor") 
+    this.courseName = ''; //variable initialization
   }
 
   ngOnInit(): void {
     console.log("ngOnInit")// initialized when compenent is ready, UI is not render before it trigger
-  }
-
-  ngAfterContentChecked(): void {
-    console.log("ngAfterContentChecked") // then content checked the all content initailazed well are not
+    //api call
+    //subscription
   }
 
   ngAfterContentInit(): void {
     console.log("ngAfterContentInit") //one component render another component  content start the initialization once done the initilation 
+  }
+
+  ngAfterContentChecked(): void {
+    console.log("ngAfterContentChecked") // then content checked the all content initailazed well are not
   }
 
   ngAfterViewInit(): void {
@@ -44,6 +49,10 @@ export class Hooks implements OnInit, AfterContentChecked, AfterContentInit, Aft
     console.log("ngOnDestroy") //whenever component destroy this life cycle event trigger
   }
 
+  // Whenever variable change docheck checking 
+  //ngDoCheck
+  //ngAfterContentChecked
+  //ngAfterViewInit
   
 }
 

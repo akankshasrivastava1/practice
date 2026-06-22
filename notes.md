@@ -1,3 +1,15 @@
+Directives
+each directive responsible to perform DOM manipulation
+
+Structural Directive - A directive which can add and remove the DOM element
+*ngIf - @if 
+*ngFor - @for
+*ngSwitch -@switch
+
+Attribu
+
+router Outlet  - render the component
+
 Custom directives 
 
 Focus 
@@ -21,4 +33,16 @@ template vs ReactiveForm
 how to change reactive value?
 their is method set value and patch value
 
+
+
+## change Detection 
+ whenever we change the variable 
+
+ whenever change happens .ts and .html 
+
+ api calls and succes 
+
+ 
+
+ ## Types of signal
 

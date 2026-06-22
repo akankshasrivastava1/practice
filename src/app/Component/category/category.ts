@@ -14,30 +14,30 @@ import { MyList } from "../../Reusable/my-list/my-list";
   templateUrl: './category.html',
   styleUrl: './category.css',
 })
-export class Category implements OnInit{
+export class Category implements OnInit {
 
   categoryForm: FormGroup = new FormGroup({
     categoryId: new FormControl(0),
     categoryName: new FormControl("", [Validators.required,
-      Validators.minLength(4)
+    Validators.minLength(4)
     ]),
     isActive: new FormControl('')
   })
 
-   alertMesaage: string = "This is from Category Page";
-   myTabList: string []= ["Category List", "Category Form"]
+  alertMesaage: string = "This is from Category Page";
+  myTabList: string[] = ["Category List", "Category Form"]
 
   usrSrv = inject(UserService);
 
   categoryList = signal<any>([]);
   currentTab: string = '';
 
-  getTabChange(tabName: string){
+  getTabChange(tabName: string) {
     debugger;
     this.currentTab = tabName;
   }
 
-  newcategory: any ={
+  newcategory: any = {
     "categoryId": 0,
     "categoryName": "",
     "isActive": ''
@@ -48,16 +48,16 @@ export class Category implements OnInit{
     this.getAllCategory();
   }
 
-  onSaveBtnClicked(){
+  onSaveBtnClicked() {
     debugger;
   }
 
-  onUpdateBtnClicked(){
+  onUpdateBtnClicked() {
     debugger;
   }
 
-  onEdit(data:any){
-    this.categoryForm = new FormGroup ({
+  onEdit(data: any) {
+    this.categoryForm = new FormGroup({
       categoryId: new FormControl(data.categoryId),
       categoryName: new FormControl(data.categoryName),
       isActive: new FormControl(data.isActive)
@@ -65,13 +65,13 @@ export class Category implements OnInit{
     this.currentTab = "Category Form"
   }
 
-  getSelectedItem(itemName: string | string[]){
+  getSelectedItem(itemName: string | string[]) {
     debugger;
   }
 
-  getAllCategory(){
+  getAllCategory() {
     this.usrSrv.getCategory().subscribe({
-      next:(res:any) =>{
+      next: (res: any) => {
         this.categoryList.set(res.data)
         debugger;
       }
@@ -87,11 +87,11 @@ export class Category implements OnInit{
   }
 
   onSaveCategory() {
-  // in reactive form can't call API directly
+    // in reactive form can't call API directly
     const formvalue = this.categoryForm.value;
     debugger;
     this.usrSrv.onSaveCategory(formvalue).subscribe({
-      next:(res:any)=>{
+      next: (res: any) => {
         debugger;
         this.getAllCategory();
       }
